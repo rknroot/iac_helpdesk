@@ -1,0 +1,18 @@
+include MANIFEST.in
+include requirements.txt
+include *.json
+include *.md
+include *.py
+include *.txt
+recursive-include iac_helpdesk *.css
+recursive-include iac_helpdesk *.csv
+recursive-include iac_helpdesk *.html
+recursive-include iac_helpdesk *.ico
+recursive-include iac_helpdesk *.js
+recursive-include iac_helpdesk *.json
+recursive-include iac_helpdesk *.md
+recursive-include iac_helpdesk *.png
+recursive-include iac_helpdesk *.py
+recursive-include iac_helpdesk *.svg
+recursive-include iac_helpdesk *.txt
+recursive-exclude iac_helpdesk *.pyc
