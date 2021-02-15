@@ -1,0 +1,172 @@
+{
+ "actions": [],
+ "autoname": "naming_series:",
+ "creation": "2021-02-12 12:32:24.333446",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "naming_series",
+  "status",
+  "column_break_2",
+  "date",
+  "time",
+  "section_break_4",
+  "category",
+  "assigned_to",
+  "description",
+  "res",
+  "clarification",
+  "clarification_details_section",
+  "clarification_status",
+  "column_break_10",
+  "clarification_from",
+  "clarification_to",
+  "amended_from"
+ ],
+ "fields": [
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "hidden": 1,
+   "label": "Title",
+   "options": "ST./.YY./.#####"
+  },
+  {
+   "fieldname": "column_break_2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "Today",
+   "fieldname": "date",
+   "fieldtype": "Date",
+   "label": "Date",
+   "read_only": 1
+  },
+  {
+   "fieldname": "section_break_4",
+   "fieldtype": "Section Break",
+   "label": "Ticket Details"
+  },
+  {
+   "fieldname": "category",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Category",
+   "options": "Tickets Category",
+   "reqd": 1
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Tickets",
+   "print_hide": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "description",
+   "fieldtype": "Small Text",
+   "label": "Description",
+   "read_only_depends_on": "eval:doc.status != \"New\""
+  },
+  {
+   "default": "New",
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "hidden": 1,
+   "in_standard_filter": 1,
+   "label": "Status",
+   "options": "New\nIn Progress\nClosed\nRejected\nOn Hold",
+   "read_only": 1,
+   "reqd": 1
+  },
+  {
+   "depends_on": "clarification",
+   "fieldname": "clarification_details_section",
+   "fieldtype": "Section Break",
+   "label": "Clarification Details"
+  },
+  {
+   "fieldname": "clarification_status",
+   "fieldtype": "Select",
+   "in_standard_filter": 1,
+   "label": "Clarification Status",
+   "options": "\nRaised\nRespond\nIn progress\nClosed"
+  },
+  {
+   "fieldname": "clarification_from",
+   "fieldtype": "Link",
+   "label": "Clarification From",
+   "options": "User"
+  },
+  {
+   "fieldname": "clarification_to",
+   "fieldtype": "Link",
+   "label": "Clarification To",
+   "options": "User"
+  },
+  {
+   "fieldname": "column_break_10",
+   "fieldtype": "Column Break"
+  },
+  {
+   "depends_on": "category",
+   "fieldname": "assigned_to",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Assigned To",
+   "options": "User"
+  },
+  {
+   "default": "0",
+   "fieldname": "clarification",
+   "fieldtype": "Check",
+   "in_list_view": 1,
+   "label": "Request Clarification"
+  },
+  {
+   "fieldname": "res",
+   "fieldtype": "Small Text",
+   "label": "Resolution Details",
+   "read_only_depends_on": "eval:doc.status == \"New\""
+  },
+  {
+   "default": "Now",
+   "fieldname": "time",
+   "fieldtype": "Time",
+   "label": "Time",
+   "read_only": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2021-02-15 21:10:13.433268",
+ "modified_by": "Administrator",
+ "module": "IAC Helpdesk",
+ "name": "Tickets",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "date",
+ "sort_order": "DESC",
+ "track_changes": 1,
+ "track_seen": 1,
+ "track_views": 1
+}

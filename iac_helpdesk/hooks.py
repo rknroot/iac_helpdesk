@@ -67,9 +67,10 @@ app_license = "MIT"
 # -----------
 # Permissions evaluated in scripted ways
 
-# permission_query_conditions = {
-# 	"Event": "frappe.desk.doctype.event.event.get_permission_query_conditions",
-# }
+permission_query_conditions = {
+	"Tickets": "iac_helpdesk.iac_helpdesk.doctype.tickets.tickets.get_permissions"
+ #	"Event": "frappe.desk.doctype.event.event.get_permission_query_conditions",
+}
 #
 # has_permission = {
 # 	"Event": "frappe.desk.doctype.event.event.has_permission",
