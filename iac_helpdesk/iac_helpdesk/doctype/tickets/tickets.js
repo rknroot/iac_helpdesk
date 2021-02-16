@@ -2,9 +2,14 @@
 // For license information, please see license.txt
 
 frappe.ui.form.on('Tickets', {
-	/*refresh(frm)
+	validate(frm)
 	{
-		console.log(frm.doc.assigned_to)
-	}*/
+		if(frm.doc.category == 'Cloud') {
+			frm.doc.assigned_to = 'ca@dev.io';
+		}
+		else if (frm.doc.category == 'IT'){
+			frm.doc.assigned_to = 'a@dev.io';
+		}
+	}
 
 });

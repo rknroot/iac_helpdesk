@@ -17,6 +17,7 @@
   "description",
   "res",
   "clarification",
+  "mail_sent",
   "clarification_details_section",
   "clarification_status",
   "column_break_10",
@@ -77,6 +78,7 @@
    "fieldname": "status",
    "fieldtype": "Select",
    "hidden": 1,
+   "in_list_view": 1,
    "in_standard_filter": 1,
    "label": "Status",
    "options": "New\nIn Progress\nClosed\nRejected\nOn Hold",
@@ -94,18 +96,21 @@
    "fieldtype": "Select",
    "in_standard_filter": 1,
    "label": "Clarification Status",
+   "mandatory_depends_on": "clarification",
    "options": "\nRaised\nRespond\nIn progress\nClosed"
   },
   {
    "fieldname": "clarification_from",
    "fieldtype": "Link",
    "label": "Clarification From",
+   "mandatory_depends_on": "clarification",
    "options": "User"
   },
   {
    "fieldname": "clarification_to",
    "fieldtype": "Link",
    "label": "Clarification To",
+   "mandatory_depends_on": "clarification",
    "options": "User"
   },
   {
@@ -119,7 +124,8 @@
    "in_list_view": 1,
    "in_standard_filter": 1,
    "label": "Assigned To",
-   "options": "User"
+   "options": "User",
+   "read_only": 1
   },
   {
    "default": "0",
@@ -140,12 +146,19 @@
    "fieldtype": "Time",
    "label": "Time",
    "read_only": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "mail_sent",
+   "fieldtype": "Check",
+   "hidden": 1,
+   "label": "Mail sent"
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2021-02-15 21:10:13.433268",
+ "modified": "2021-02-16 22:44:26.079778",
  "modified_by": "Administrator",
  "module": "IAC Helpdesk",
  "name": "Tickets",
@@ -160,6 +173,44 @@
    "read": 1,
    "report": 1,
    "role": "System Manager",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Admin",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Cloud Admin",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Users",
    "share": 1,
    "write": 1
   }

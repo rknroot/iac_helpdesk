@@ -67,7 +67,7 @@
  "index_web_pages_for_search": 1,
  "issingle": 1,
  "links": [],
- "modified": "2021-02-15 18:13:27.084190",
+ "modified": "2021-02-16 23:18:20.851374",
  "modified_by": "Administrator",
  "module": "IAC Helpdesk",
  "name": "Recurrence Ticket Creation Tool",
@@ -80,6 +80,24 @@
    "print": 1,
    "read": 1,
    "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "role": "Admin",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "role": "Cloud Admin",
    "share": 1,
    "write": 1
   }
