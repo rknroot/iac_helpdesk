@@ -1,0 +1,39 @@
+---
+full_width: 1
+title: IAC Help Desk User Manual
+---
+
+{% from "templates/includes/macros.html" import cards %}
+
+{{ web_blocks([
+	{
+		'template': 'Hero',
+		'values': {
+			'title': 'IAC Help Desk User Manual',
+			'subtitle': 'IAC Help Desk User Manual...'
+		},
+		'add_bottom_padding': 0,
+		'add_container': 0
+	}
+]) }}
+
+<section class="section section-padding-top">
+	<h2 class="section-title">Basics</h2>
+	{{ cards([
+		{
+			'title': 'Introduction',
+			'content': 'Introduction to IAC Help Desk to understand before starting operations',
+			'link': 'introduction.md',
+		},
+		{
+			'title': 'Tickets',
+			'content': 'Learn how to create tickets and manage',
+			'link': 'Tickets.md',
+		},
+		{
+			'title': 'Tickets Category',
+			'content': 'Learn how to create Tickets Category',
+			'link': 'Tickets Category.md',
+		},
+	]) }}
+</section>

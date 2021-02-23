@@ -13,7 +13,7 @@ app_license = "MIT"
 
 # Includes in <head>
 # ------------------
-
+calendars = ["Tickets"]
 # include js, css files in header of desk.html
 # app_include_css = "/assets/iac_helpdesk/css/iac_helpdesk.css"
 # app_include_js = "/assets/iac_helpdesk/js/iac_helpdesk.js"

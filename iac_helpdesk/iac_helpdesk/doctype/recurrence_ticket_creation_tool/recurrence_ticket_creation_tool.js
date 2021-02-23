@@ -14,7 +14,7 @@ frappe.ui.form.on('Recurrence Ticket Creation Tool', {
 					if (tickets_schedule) {
 						const tickets_schedule_html = tickets_schedule.map(c => `
 							<tr>
-								<td><a href="/app/tickets/${c.name}">${c.name}</a></td>
+								<td><a href="/desk#Form/Tickets/${c.name}">${c.name}</a></td>
 								<td>${c.date}</td>
 							</tr>
 						`).join('');

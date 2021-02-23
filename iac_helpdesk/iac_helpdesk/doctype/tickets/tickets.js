@@ -2,14 +2,46 @@
 // For license information, please see license.txt
 
 frappe.ui.form.on('Tickets', {
-	validate(frm)
+	refresh(frm)
 	{
-		if(frm.doc.category == 'Cloud') {
-			frm.doc.assigned_to = 'ca@dev.io';
+		$(cur_frm.fields_dict.create_ticket.input).addClass("btn-primary").css({'color':'white','font-weight': 'bold'});
+	},
+	create_ticket: function(frm){
+		if (cur_frm.doc.__unsaved == 1) {
+			frappe.throw('Save, to proceed!');
+		} 
+		else{
+			frappe.call({
+				method: 'iac_helpdesk.iac_helpdesk.doctype.tickets.tickets.get_tickets',
+				args:{"start":frm.doc.ticket_date,
+						"end": frm.doc.repeat_till,
+						"user": frm.doc.name
+				},
+				callback: function(r){
+					frappe.call({
+						method: 'iac_helpdesk.iac_helpdesk.doctype.tickets.tickets.del_duplicate',
+						args:{"start":frm.doc.ticket_date
+						},
+						callback: function(r){
+							frappe.msgprint('Recurrence Tickets Created')
+							cur_frm.refresh_fields();
+				}
+			});
+				}
+			});
 		}
-		else if (frm.doc.category == 'IT'){
-			frm.doc.assigned_to = 'a@dev.io';
+
+	},
+	repeat_on: function(frm) {
+		if(frm.doc.repeat_on != "Weekly"){
+			frm.doc.monday = '';
+			frm.doc.tuesday = '';
+			frm.doc.wednesday = '';
+			frm.doc.thursday = '';
+			frm.doc.friday = '';
+			frm.doc.saturday = '';
+			frm.doc.sunday = '';
+			cur_frm.refresh_fields();
 		}
 	}
-
 });
