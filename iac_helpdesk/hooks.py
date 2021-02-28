@@ -73,7 +73,8 @@ permission_query_conditions = {
 }
 #
 # has_permission = {
-# 	"Event": "frappe.desk.doctype.event.event.has_permission",
+# 	"Tickets": "iac_helpdesk.iac_helpdesk.doctype.tickets.tickets.has_permission"
+# # 	"Event": "frappe.desk.doctype.event.event.has_permission",
 # }
 
 # Document Events

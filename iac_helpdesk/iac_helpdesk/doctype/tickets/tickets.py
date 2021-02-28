@@ -21,6 +21,16 @@ from datetime import date, time, datetime, timedelta
 weekdays = ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"]
 
 class Tickets(Document):
+	def onload(self):
+		if self.create_recurrence_ticket:
+			parent_ticket = frappe.db.get_all("Tickets",filters={"parent_ticket":self.name},fields=('name','ticket_date','status'))
+			for i in parent_ticket:
+				child = self.append('child_tickets',{})
+				#frappe.db.set_value('')
+				child.title = i.name
+				child.status = i.status
+				child.ticket_date = i.ticket_date
+
 	def validate(self):
 		if self.category == "Cloud":
 			self.assigned_to = "ca@dev.io"
@@ -41,6 +51,7 @@ def get_tickets(start, end, user=None, for_reminder=False, filters=None):
 	events = frappe.db.sql("""
 		SELECT `tabTickets`.name,
 				`tabTickets`.ticket_date,
+				`tabTickets`.priority,
 				`tabTickets`.category,
 				`tabTickets`.description,
 				`tabTickets`.owner,
@@ -181,8 +192,10 @@ def get_tickets(start, end, user=None, for_reminder=False, filters=None):
 		#frappe.msgprint('last add'+str(e))
 		ticket_schedule = frappe.new_doc("Tickets")
 		ticket_schedule.category = e.category
+		ticket_schedule.priority = e.priority
 		ticket_schedule.description = e.description
 		ticket_schedule.ticket_date = e.ticket_date
+		ticket_schedule.parent_ticket = e.name
 		ticket_schedule.flags.ignore_permissions = 1
 		ticket_schedule.insert()
 		
@@ -202,6 +215,20 @@ def del_duplicate(start):
 		if i.create_recurrence_ticket == 0:
 			#frappe.msgprint('DEL'+str(i.name))
 			frappe.db.sql("""delete from `tabTickets` where name = %s""",(i.name))
+
+# @frappe.whitelist()
+# def update_child(start):
+# 	self = frappe.get_doc('Tickets', start)
+# 	if self.create_recurrence_ticket:
+# 		parent_ticket = frappe.db.get_all("Tickets",filters={"parent_ticket":self.name},fields=('name','ticket_date','status'))
+# 		for i in parent_ticket:
+# 			child = self.append('child_tickets',{})
+# 			child.title = i.name
+# 			child.status = i.status
+# 			child.ticket_date = i.ticket_date
+# 			frappe.msgprint('call save')
+# 			self.save()
+
 
 		# if self.assigned_to and not self.mail_sent:
 		# 	mail_id = self.assigned_to
@@ -271,7 +298,7 @@ def get_permissions(user):
 		retval = """((`tabTickets`.owner = '{user}' or 
 				`tabTickets`.modified_by = '{user}'))""".format(user=frappe.session.user)
 
-
 	return retval
+
 
 

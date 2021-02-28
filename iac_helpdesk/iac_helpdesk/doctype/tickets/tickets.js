@@ -6,6 +6,11 @@ frappe.ui.form.on('Tickets', {
 	{
 		$(cur_frm.fields_dict.create_ticket.input).addClass("btn-primary").css({'color':'white','font-weight': 'bold'});
 	},
+	/*onload(frm){
+		if (frm.doc.create_recurrence_ticket == 1) {
+			frm.doc.reload();
+		}
+	},*/
 	create_ticket: function(frm){
 		if (cur_frm.doc.__unsaved == 1) {
 			frappe.throw('Save, to proceed!');
@@ -24,9 +29,9 @@ frappe.ui.form.on('Tickets', {
 						},
 						callback: function(r){
 							frappe.msgprint('Recurrence Tickets Created')
-							cur_frm.refresh_fields();
-				}
-			});
+							frm.reload_doc()
+						}	
+					});
 				}
 			});
 		}

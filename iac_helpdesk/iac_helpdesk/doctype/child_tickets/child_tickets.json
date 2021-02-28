@@ -1,0 +1,52 @@
+{
+ "actions": [],
+ "creation": "2021-02-26 09:38:29.865477",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "title",
+  "status",
+  "column_break_3",
+  "ticket_date"
+ ],
+ "fields": [
+  {
+   "fieldname": "title",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Title",
+   "options": "Tickets"
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Status",
+   "options": "New\nIn Progress\nClosed\nRejected\nOn Hold\nReopen"
+  },
+  {
+   "fieldname": "column_break_3",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "ticket_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Start Date"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2021-02-27 18:11:25.824941",
+ "modified_by": "Administrator",
+ "module": "IAC Helpdesk",
+ "name": "Child Tickets",
+ "owner": "Administrator",
+ "permissions": [],
+ "quick_entry": 1,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1
+}
