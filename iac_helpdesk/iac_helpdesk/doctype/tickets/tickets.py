@@ -189,8 +189,9 @@ def get_tickets(start, end, user=None, for_reminder=False, filters=None):
 	events = events + add_events
 	#frappe.msgprint(str(events))
 	for e in events:
-		#frappe.msgprint('last add'+str(e))
+		#frappe.msgprint(str(e.name)+'-'+)
 		ticket_schedule = frappe.new_doc("Tickets")
+		#ticket_schedule.name = e.name + 
 		ticket_schedule.category = e.category
 		ticket_schedule.priority = e.priority
 		ticket_schedule.description = e.description

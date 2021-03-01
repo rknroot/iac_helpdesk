@@ -115,14 +115,14 @@
   {
    "fieldname": "clarification_from",
    "fieldtype": "Link",
-   "label": "Clarification From",
+   "label": "Clarification Need From",
    "mandatory_depends_on": "clarification",
    "options": "User"
   },
   {
    "fieldname": "clarification_to",
    "fieldtype": "Link",
-   "label": "Clarification To",
+   "label": "Clarification Need To",
    "mandatory_depends_on": "clarification",
    "options": "User"
   },
@@ -143,7 +143,6 @@
    "default": "0",
    "fieldname": "clarification",
    "fieldtype": "Check",
-   "in_list_view": 1,
    "label": "Request Clarification"
   },
   {
@@ -170,7 +169,8 @@
    "default": "0",
    "fieldname": "create_recurrence_ticket",
    "fieldtype": "Check",
-   "label": "Create Recurrence Ticket"
+   "label": "Create Recurrence Ticket",
+   "permlevel": 1
   },
   {
    "depends_on": "create_recurrence_ticket",
@@ -282,6 +282,8 @@
    "depends_on": "parent_ticket",
    "fieldname": "parent_ticket",
    "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
    "label": "Parent Ticket",
    "options": "Tickets",
    "read_only": 1
@@ -300,7 +302,7 @@
  ],
  "is_submittable": 1,
  "links": [],
- "modified": "2021-02-27 22:44:23.611091",
+ "modified": "2021-03-01 12:33:15.033228",
  "modified_by": "Administrator",
  "module": "IAC Helpdesk",
  "name": "Tickets",
