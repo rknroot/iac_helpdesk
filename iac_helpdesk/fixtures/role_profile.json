@@ -1,0 +1,68 @@
+[
+ {
+  "docstatus": 0,
+  "doctype": "Role Profile",
+  "modified": "2021-02-14 22:34:20.672571",
+  "name": "admin",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "role_profile": "admin",
+  "roles": [
+   {
+    "parent": "admin",
+    "parentfield": "roles",
+    "parenttype": "Role Profile",
+    "role": "Admin"
+   }
+  ]
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Role Profile",
+  "modified": "2021-03-01 10:23:19.435176",
+  "name": "cloud_admin",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "role_profile": "cloud_admin",
+  "roles": [
+   {
+    "parent": "cloud_admin",
+    "parentfield": "roles",
+    "parenttype": "Role Profile",
+    "role": "Cloud Admin"
+   },
+   {
+    "parent": "cloud_admin",
+    "parentfield": "roles",
+    "parenttype": "Role Profile",
+    "role": "IAC Employees"
+   }
+  ]
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Role Profile",
+  "modified": "2021-03-08 12:07:26.387558",
+  "name": "user",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "role_profile": "user",
+  "roles": [
+   {
+    "parent": "user",
+    "parentfield": "roles",
+    "parenttype": "Role Profile",
+    "role": "IAC Employees"
+   },
+   {
+    "parent": "user",
+    "parentfield": "roles",
+    "parenttype": "Role Profile",
+    "role": "Users"
+   }
+  ]
+ }
+]

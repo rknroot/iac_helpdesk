@@ -17,6 +17,8 @@ from frappe.utils import (getdate, cint, add_months, date_diff, add_days,
 from frappe.utils.user import get_enabled_system_users
 from frappe.desk.reportview import get_filters_cond
 from datetime import date, time, datetime, timedelta
+from frappe.model.naming import make_autoname, parse_naming_series
+
 
 weekdays = ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"]
 
@@ -37,6 +39,13 @@ class Tickets(Document):
 
 		elif self.category == "IT":
 			self.assigned_to = "a@dev.io"
+
+	def autoname(self):
+		ticket_series = frappe.db.get_single_value("Tickets Settings","ticket_series")
+		if not self.parent_ticket:
+			self.name = make_autoname(ticket_series)
+		if self.parent_ticket:
+			self.name = make_autoname(self.parent_ticket + '.-.##')
 
 
 @frappe.whitelist()
@@ -189,9 +198,7 @@ def get_tickets(start, end, user=None, for_reminder=False, filters=None):
 	events = events + add_events
 	#frappe.msgprint(str(events))
 	for e in events:
-		#frappe.msgprint(str(e.name)+'-'+)
 		ticket_schedule = frappe.new_doc("Tickets")
-		#ticket_schedule.name = e.name + 
 		ticket_schedule.category = e.category
 		ticket_schedule.priority = e.priority
 		ticket_schedule.description = e.description

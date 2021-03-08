@@ -17,5 +17,27 @@ iac_helpdesk/config/__init__.py
 iac_helpdesk/config/desktop.py
 iac_helpdesk/config/docs.py
 iac_helpdesk/iac_helpdesk/__init__.py
+iac_helpdesk/iac_helpdesk/doctype/__init__.py
+iac_helpdesk/iac_helpdesk/doctype/child_tickets/__init__.py
+iac_helpdesk/iac_helpdesk/doctype/child_tickets/child_tickets.json
+iac_helpdesk/iac_helpdesk/doctype/child_tickets/child_tickets.py
+iac_helpdesk/iac_helpdesk/doctype/tickets/__init__.py
+iac_helpdesk/iac_helpdesk/doctype/tickets/test_tickets.py
+iac_helpdesk/iac_helpdesk/doctype/tickets/tickets.js
+iac_helpdesk/iac_helpdesk/doctype/tickets/tickets.json
+iac_helpdesk/iac_helpdesk/doctype/tickets/tickets.py
+iac_helpdesk/iac_helpdesk/doctype/tickets/tickets_list.js
+iac_helpdesk/iac_helpdesk/doctype/tickets_category/__init__.py
+iac_helpdesk/iac_helpdesk/doctype/tickets_category/test_tickets_category.py
+iac_helpdesk/iac_helpdesk/doctype/tickets_category/tickets_category.js
+iac_helpdesk/iac_helpdesk/doctype/tickets_category/tickets_category.json
+iac_helpdesk/iac_helpdesk/doctype/tickets_category/tickets_category.py
 iac_helpdesk/templates/__init__.py
 iac_helpdesk/templates/pages/__init__.py
+iac_helpdesk/www/__init__.py
+iac_helpdesk/www/docs/Tickets Category.md
+iac_helpdesk/www/docs/Tickets.md
+iac_helpdesk/www/docs/index.html
+iac_helpdesk/www/docs/index.txt
+iac_helpdesk/www/docs/introduction.md
+iac_helpdesk/www/docs/assets/IAC_Desk.png

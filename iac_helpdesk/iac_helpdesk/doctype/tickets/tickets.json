@@ -1,12 +1,10 @@
 {
  "actions": [],
- "autoname": "naming_series:",
  "creation": "2021-02-12 12:32:24.333446",
  "doctype": "DocType",
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
-  "naming_series",
   "status",
   "column_break_2",
   "section_break_4",
@@ -46,13 +44,6 @@
   "child_tickets"
  ],
  "fields": [
-  {
-   "fieldname": "naming_series",
-   "fieldtype": "Select",
-   "hidden": 1,
-   "label": "Title",
-   "options": "ST./.YY./.#####"
-  },
   {
    "fieldname": "column_break_2",
    "fieldtype": "Section Break"
@@ -302,7 +293,7 @@
  ],
  "is_submittable": 1,
  "links": [],
- "modified": "2021-03-01 12:33:15.033228",
+ "modified": "2021-03-01 22:11:33.761544",
  "modified_by": "Administrator",
  "module": "IAC Helpdesk",
  "name": "Tickets",
