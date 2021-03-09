@@ -6,11 +6,6 @@ frappe.ui.form.on('Tickets', {
 	{
 		$(cur_frm.fields_dict.create_ticket.input).addClass("btn-primary").css({'color':'white','font-weight': 'bold'});
 	},
-/*	onload(frm){
-
-			frm.reload_doc()
-
-	},*/
 	create_ticket: function(frm){
 		if (cur_frm.doc.__unsaved == 1) {
 			frappe.throw('Save, to proceed!');

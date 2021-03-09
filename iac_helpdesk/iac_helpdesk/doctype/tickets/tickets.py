@@ -28,7 +28,6 @@ class Tickets(Document):
 			parent_ticket = frappe.db.get_all("Tickets",filters={"parent_ticket":self.name},fields=('name','ticket_date','status'))
 			for i in parent_ticket:
 				child = self.append('child_tickets',{})
-				#frappe.db.set_value('')
 				child.title = i.name
 				child.status = i.status
 				child.ticket_date = i.ticket_date
@@ -54,7 +53,6 @@ def get_tickets(start, end, user=None, for_reminder=False, filters=None):
 		filters = json.loads(filters)
 
 	filter_condition = get_filters_cond('Tickets', filters, [])
-	#frappe.msgprint(str(user))
 	tables = ["`tabTickets`"]
 
 	events = frappe.db.sql("""
@@ -111,17 +109,12 @@ def get_tickets(start, end, user=None, for_reminder=False, filters=None):
 
 	def add_event(e, date):
 		new_event = e.copy()
-		#frappe.msgprint('new' + str(new_event))
 		enddate = add_days(date,int(date_diff(e.ticket_date.split(" ")[0], e.ticket_date.split(" ")[0]))) \
 			if (e.ticket_date and e.ticket_date) else date
-		#frappe.msgprint('enddate'+str(enddate))
 		new_event.ticket_date = date + " " + e.ticket_date.split(" ")[1]
-		#frappe.msgprint('start'+str(new_event.starts_on))
 		new_event.ticket_date = new_event.ticket_date = enddate + " " + e.ticket_date.split(" ")[1] if e.ticket_date else None
-		#frappe.msgprint('end'+str(new_event.ends_on))
 		
 		add_events.append(new_event)
-		#frappe.msgprint('add event'+str(add_events))
 
 	for e in events:
 		if e.create_recurrence_ticket:
@@ -165,7 +158,6 @@ def get_tickets(start, end, user=None, for_reminder=False, filters=None):
 						add_event(e, date)
 
 					date = add_months(start_from, i+1)
-					#frappe.msgprint(str(date))
 				remove_events.append(e)
 
 			if e.repeat_on == "Weekly":
@@ -175,19 +167,13 @@ def get_tickets(start, end, user=None, for_reminder=False, filters=None):
 						and getdate(date) <= getdate(repeat) and getdate(date) >= getdate(event_start) \
 						and e[weekdays[getdate(date).weekday()]]:
 						add_event(e, date)
-					#frappe.msgprint(str(date))
 
 				remove_events.append(e)
 
 			if e.repeat_on == "Daily":
-				#frappe.msgprint('inside daily '+str(date_diff(end,start)))
-				#frappe.msgprint('end '+str(end) + ' start '+str(start))
-				#start_increment = start + timedelta(days="1")
 				for cnt in range(date_diff(end, start) + 1):
-					#frappe.msgprint('count'+str(cnt))
 					date = add_days(start, cnt)
 					if getdate(date) >= getdate(event_start) and getdate(date) <= getdate(end) and getdate(date) <= getdate(repeat):
-						#frappe.msgprint('final date '+str(date))
 						add_event(e, date)
 				
 				remove_events.append(e)
@@ -196,7 +182,6 @@ def get_tickets(start, end, user=None, for_reminder=False, filters=None):
 		events.remove(e)
 
 	events = events + add_events
-	#frappe.msgprint(str(events))
 	for e in events:
 		ticket_schedule = frappe.new_doc("Tickets")
 		ticket_schedule.category = e.category
@@ -207,58 +192,16 @@ def get_tickets(start, end, user=None, for_reminder=False, filters=None):
 		ticket_schedule.flags.ignore_permissions = 1
 		ticket_schedule.insert()
 		
-		
-		#return ticket_schedule
-		# remove weekday properties (to reduce message size)
-		#for w in weekdays:
-			#del e[w]
+
 	
 	#return events
 @frappe.whitelist()
 def del_duplicate(start):
-	# frappe.msgprint('call'+str(start))
 	get_tickets_duplicate = frappe.db.sql("""select name, ticket_date, create_recurrence_ticket from `tabTickets` where ticket_date = %s""",(start),as_dict=1)
 	for i in get_tickets_duplicate:
-		#frappe.msgprint(str(i.create_recurrence_ticket))
+
 		if i.create_recurrence_ticket == 0:
-			#frappe.msgprint('DEL'+str(i.name))
 			frappe.db.sql("""delete from `tabTickets` where name = %s""",(i.name))
-
-# @frappe.whitelist()
-# def update_child(start):
-# 	self = frappe.get_doc('Tickets', start)
-# 	if self.create_recurrence_ticket:
-# 		parent_ticket = frappe.db.get_all("Tickets",filters={"parent_ticket":self.name},fields=('name','ticket_date','status'))
-# 		for i in parent_ticket:
-# 			child = self.append('child_tickets',{})
-# 			child.title = i.name
-# 			child.status = i.status
-# 			child.ticket_date = i.ticket_date
-# 			frappe.msgprint('call save')
-# 			self.save()
-
-
-		# if self.assigned_to and not self.mail_sent:
-		# 	mail_id = self.assigned_to
-
-		# 	subj = 'New Ticket Notification - ' + cstr(self.name)  + ' for ' + self.category
-		# 	notification_message =  'New Ticket was Generated - <a href="desk#Form/Ticket/{0}" target="_blank">{0}</a> \
-		# 	for {1} Category, Against Ticket Number {2}.'.format(self.name,self.category,self.name)
-
-		# 	frappe.sendmail(mail_id,subject=subj,\
-		# 		message = notification_message)
-		# 	frappe.msgprint("Ticket Raised, Email Sent Successfuly!")
-		# 	self.mail_sent = '1'
-
-		# if self.clarification and self.clarification_from and self.clarification_to and self.clarification_status == "Raised":
-		# 	mail_id = self.clarification_from
-
-		# 	subj = 'New Clarification Notification - ' + cstr(self.name)  + ' from ' + self.clarification_to
-		# 	notification_message =  'New Clarification was Requested - <a href="desk#Form/Ticket/{0}" target="_blank">{0}</a> \
-		# 	for {1} Category, Against Ticket Number {2}.'.format(self.name,self.category,self.name)
-
-		# 	frappe.sendmail(mail_id,subject=subj,\
-		# 		message = notification_message)
 
 @frappe.whitelist()
 def get_events(start, end, filters=None):
