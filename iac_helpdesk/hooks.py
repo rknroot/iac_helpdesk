@@ -126,5 +126,5 @@ doc_events = {
 # override_doctype_dashboards = {
 # 	"Task": "iac_helpdesk.task.get_dashboard_data"
 # }
-fixtures = ["Desk Page", "System Settings", "Role", "Module Profile", "Role Profile"]
+fixtures = ["Desk Page", "System Settings", "Role", "Module Profile", "Role Profile", "Workflow", "Workflow State", "Workflow Action Master"]
 
