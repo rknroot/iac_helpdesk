@@ -34,10 +34,10 @@ class Tickets(Document):
 
 	def validate(self):
 		if self.category == "Cloud":
-			self.assigned_to = "ca@dev.io"
+			self.assigned_to = "kumar@advanceecomsolutions.com"
 
 		elif self.category == "IT":
-			self.assigned_to = "a@dev.io"
+			self.assigned_to = "ramakrishnan@iackrishitech.com"
 
 	def autoname(self):
 		ticket_series = frappe.db.get_single_value("Tickets Settings","ticket_series")
@@ -58,6 +58,7 @@ def get_tickets(start, end, user=None, for_reminder=False, filters=None):
 	events = frappe.db.sql("""
 		SELECT `tabTickets`.name,
 				`tabTickets`.ticket_date,
+                                `tabTickets`.ticket_title,
 				`tabTickets`.priority,
 				`tabTickets`.category,
 				`tabTickets`.description,
@@ -113,7 +114,6 @@ def get_tickets(start, end, user=None, for_reminder=False, filters=None):
 			if (e.ticket_date and e.ticket_date) else date
 		new_event.ticket_date = date + " " + e.ticket_date.split(" ")[1]
 		new_event.ticket_date = new_event.ticket_date = enddate + " " + e.ticket_date.split(" ")[1] if e.ticket_date else None
-		
 		add_events.append(new_event)
 
 	for e in events:
@@ -175,7 +175,6 @@ def get_tickets(start, end, user=None, for_reminder=False, filters=None):
 					date = add_days(start, cnt)
 					if getdate(date) >= getdate(event_start) and getdate(date) <= getdate(end) and getdate(date) <= getdate(repeat):
 						add_event(e, date)
-				
 				remove_events.append(e)
 
 	for e in remove_events:
@@ -184,6 +183,7 @@ def get_tickets(start, end, user=None, for_reminder=False, filters=None):
 	events = events + add_events
 	for e in events:
 		ticket_schedule = frappe.new_doc("Tickets")
+		ticket_schedule.ticket_title = e.ticket_title
 		ticket_schedule.category = e.category
 		ticket_schedule.priority = e.priority
 		ticket_schedule.description = e.description
@@ -191,9 +191,7 @@ def get_tickets(start, end, user=None, for_reminder=False, filters=None):
 		ticket_schedule.parent_ticket = e.name
 		ticket_schedule.flags.ignore_permissions = 1
 		ticket_schedule.insert()
-		
 
-	
 	#return events
 @frappe.whitelist()
 def del_duplicate(start):

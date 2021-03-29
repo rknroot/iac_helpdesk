@@ -1,0 +1,45 @@
+{
+ "actions": [],
+ "creation": "2021-03-29 11:36:51.571084",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "activity_type",
+  "activity_date",
+  "hours_spent"
+ ],
+ "fields": [
+  {
+   "fieldname": "activity_type",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Activity Type"
+  },
+  {
+   "default": "Today",
+   "fieldname": "activity_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Activity Date"
+  },
+  {
+   "fieldname": "hours_spent",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Hours Spent"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2021-03-29 11:39:26.262870",
+ "modified_by": "Administrator",
+ "module": "IAC Helpdesk",
+ "name": "Effort Log",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1
+}
