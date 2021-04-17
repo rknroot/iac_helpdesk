@@ -103,6 +103,7 @@
   {
    "fieldname": "clarification_status",
    "fieldtype": "Select",
+   "in_list_view": 1,
    "in_standard_filter": 1,
    "label": "Clarification Status",
    "mandatory_depends_on": "clarification",
@@ -111,14 +112,14 @@
   {
    "fieldname": "clarification_from",
    "fieldtype": "Link",
-   "label": "Clarification Need From",
+   "label": "Clarification Needed From",
    "mandatory_depends_on": "clarification",
    "options": "User"
   },
   {
    "fieldname": "clarification_to",
    "fieldtype": "Link",
-   "label": "Clarification Need To",
+   "label": "Clarification Needed By",
    "mandatory_depends_on": "clarification",
    "options": "User"
   },
@@ -323,7 +324,7 @@
  ],
  "is_submittable": 1,
  "links": [],
- "modified": "2021-03-29 12:23:31.922274",
+ "modified": "2021-04-17 10:22:49.773410",
  "modified_by": "Administrator",
  "module": "IAC Helpdesk",
  "name": "Tickets",
@@ -382,8 +383,5 @@
  "route": "tickets",
  "sort_field": "ticket_date",
  "sort_order": "DESC",
- "title_field": "ticket_title",
- "track_changes": 1,
- "track_seen": 1,
- "track_views": 1
+ "title_field": "ticket_title"
 }

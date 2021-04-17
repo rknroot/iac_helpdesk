@@ -9,7 +9,7 @@ frappe.ui.form.on('Tickets', {
 	create_ticket: function(frm){
 		if (cur_frm.doc.__unsaved == 1) {
 			frappe.throw('Save, to proceed!');
-		} 
+		}
 		else{
 			frappe.call({
 				method: 'iac_helpdesk.iac_helpdesk.doctype.tickets.tickets.get_tickets',
@@ -25,7 +25,7 @@ frappe.ui.form.on('Tickets', {
 						callback: function(r){
 							frappe.msgprint('Recurrence Tickets Created')
 							frm.reload_doc()
-						}	
+						}
 					});
 				}
 			});

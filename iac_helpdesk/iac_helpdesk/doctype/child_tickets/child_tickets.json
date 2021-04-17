@@ -8,7 +8,8 @@
   "title",
   "status",
   "column_break_3",
-  "ticket_date"
+  "ticket_date",
+  "pt"
  ],
  "fields": [
   {
@@ -19,6 +20,7 @@
    "options": "Tickets"
   },
   {
+   "fetch_from": "title.status",
    "fieldname": "status",
    "fieldtype": "Select",
    "in_list_view": 1,
@@ -30,16 +32,24 @@
    "fieldtype": "Column Break"
   },
   {
+   "fetch_from": "title.ticket_date",
    "fieldname": "ticket_date",
    "fieldtype": "Date",
    "in_list_view": 1,
    "label": "Start Date"
+  },
+  {
+   "fieldname": "pt",
+   "fieldtype": "Link",
+   "label": "Parent Ticket",
+   "options": "Tickets",
+   "read_only": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2021-02-27 18:11:25.824941",
+ "modified": "2021-04-17 11:00:15.593379",
  "modified_by": "Administrator",
  "module": "IAC Helpdesk",
  "name": "Child Tickets",

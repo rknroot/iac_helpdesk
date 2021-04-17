@@ -25,20 +25,18 @@ weekdays = ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday", 
 class Tickets(Document):
 	def onload(self):
 		if self.create_recurrence_ticket:
-			parent_ticket = frappe.db.get_all("Tickets",filters={"parent_ticket":self.name},fields=('name','ticket_date','status'))
-			for i in parent_ticket:
-				if i.name not in [j.title for j in self.get("child_tickets")]:
-					child = self.append('child_tickets',{})
-					child.title = i.name
-					child.status = i.status
-					child.ticket_date = i.ticket_date
 
-	def validate(self):
 		if self.category == "Cloud":
 			self.assigned_to = "kumar@advanceecomsolutions.com"
-
 		elif self.category == "IT":
 			self.assigned_to = "ramakrishnan@iackrishitech.com"
+		if self.create_recurrence_ticket:
+                        parent_ticket = frappe.db.get_all("Tickets",filters={"parent_ticket":self.name},fields=('name','ticket_date','status'))
+                        for i in parent_ticket:
+                                child = self.append('child_tickets',{})
+                                child.title = i.name
+                                child.status = i.status
+                                child.ticket_date = i.ticket_date
 
 	def autoname(self):
 		ticket_series = frappe.db.get_single_value("Tickets Settings","ticket_series")
@@ -249,7 +247,6 @@ def get_permissions(user):
 				`tabTickets`.modified_by = '{user}'))""".format(user=frappe.session.user)
 
 	return retval
-
 
 
 
