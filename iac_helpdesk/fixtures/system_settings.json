@@ -6,6 +6,7 @@
   "allow_login_after_fail": 60,
   "allow_login_using_mobile_number": 0,
   "allow_login_using_user_name": 0,
+  "app_name": null,
   "apply_strict_user_permissions": 0,
   "attach_view_link": 0,
   "backup_limit": 3,
@@ -49,7 +50,6 @@
   "strip_exif_metadata_from_uploaded_images": 0,
   "time_format": "HH:mm:ss",
   "time_zone": "Asia/Kolkata",
-  "two_factor_method": "OTP App",
-  "use_socketio_to_upload_file": 1
+  "two_factor_method": "OTP App"
  }
 ]
