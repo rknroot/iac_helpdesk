@@ -30,6 +30,9 @@ iac_helpdesk/iac_helpdesk/doctype/api.py
 iac_helpdesk/iac_helpdesk/doctype/child_tickets/__init__.py
 iac_helpdesk/iac_helpdesk/doctype/child_tickets/child_tickets.json
 iac_helpdesk/iac_helpdesk/doctype/child_tickets/child_tickets.py
+iac_helpdesk/iac_helpdesk/doctype/effort_log/__init__.py
+iac_helpdesk/iac_helpdesk/doctype/effort_log/effort_log.json
+iac_helpdesk/iac_helpdesk/doctype/effort_log/effort_log.py
 iac_helpdesk/iac_helpdesk/doctype/tickets/__init__.py
 iac_helpdesk/iac_helpdesk/doctype/tickets/test_tickets.py
 iac_helpdesk/iac_helpdesk/doctype/tickets/tickets.js
@@ -51,7 +54,9 @@ iac_helpdesk/templates/pages/__init__.py
 iac_helpdesk/www/__init__.py
 iac_helpdesk/www/docs/Tickets Category.md
 iac_helpdesk/www/docs/Tickets.md
+iac_helpdesk/www/docs/__init__.py
 iac_helpdesk/www/docs/index.html
 iac_helpdesk/www/docs/index.txt
 iac_helpdesk/www/docs/introduction.md
 iac_helpdesk/www/docs/assets/IAC_Desk.png
+iac_helpdesk/www/docs/assets/__init__.py
