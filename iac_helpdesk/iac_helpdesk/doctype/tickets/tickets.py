@@ -212,9 +212,9 @@ def get_events(start, end, filters=None):
 	from frappe.desk.calendar import get_event_conditions
 	conditions = get_event_conditions("Tickets", filters)
 
-	data = frappe.db.sql("""select name, status, category,
-			timestamp(ticket_date, time) as from_datetime,
-			timestamp(ticket_date, time) as to_datetime,
+	data = frappe.db.sql("""select name, status, ticket_title, category,
+			timestamp(ticket_date, time) as ticket_date,
+			timestamp(ticket_date, time) as ticket_date,
 			0 as 'allDay'
 		from `tabTickets`
 		where ( ticket_date between %(start)s and %(end)s )
@@ -231,13 +231,13 @@ def get_permissions(user):
 	retval = ''
 	if "System Manager" in frappe.permissions.get_roles(frappe.session.user):
 		pass
-	
+
 	elif "Admin" in frappe.permissions.get_roles(frappe.session.user):
 		cat_list = frappe.db.sql("""select name from tabTickets Category""",as_dict = True)
 		for i in cat_list:
 			retval = """((`tabTickets`.category = '{i}' ) or (`tabTickets`.owner = '{user}' or 
 				`tabTickets`.modified_by = '{user}'))""".format(i = 'IT', user=frappe.session.user)
-	
+
 	elif "Cloud Admin" in frappe.permissions.get_roles(frappe.session.user):
 		cat_list = frappe.db.sql("""select name from tabTickets Category""",as_dict = True)
 		for i in cat_list:
@@ -250,6 +250,19 @@ def get_permissions(user):
 
 	return retval
 
+@frappe.whitelist()
+def send_statusmail(cl_status, docid):
+	self = frappe.get_doc("Tickets", docid)
+	if cl_status == "Raised" and self.clarification_from:
+		subj = 'Clarification '+ cl_status +' for ' + self.name + '-' + self.ticket_title
+		notification_message = 'Clarification {0} for <a href="desk#Form/Tickets/{1}" target="_blank">{2}</a> \
+		{3} .'.format(cl_status, self.name, self.name, self.ticket_title)
+		frappe.sendmail(self.clarification_from,subject=subj,\
+		message = notification_message)
 
-
-
+	elif cl_status != "Raised" and self.clarification_to:
+		subj = 'Clarification '+ cl_status +' for ' + self.name + '-' + self.ticket_title
+		notification_message = 'Clarification {0} for <a href="desk#Form/Tickets/{1}" target="_blank">{2}</a> \
+		{3} .'.format(cl_status, self.name, self.name, self.ticket_title)
+		frappe.sendmail(self.clarification_to,subject=subj,\
+		message = notification_message)

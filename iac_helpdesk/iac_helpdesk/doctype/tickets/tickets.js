@@ -43,5 +43,17 @@ frappe.ui.form.on('Tickets', {
 			frm.doc.sunday = '';
 			cur_frm.refresh_fields();
 		}
+	},
+	clarification_status: function(frm) {
+		frappe.call({
+			method: 'iac_helpdesk.iac_helpdesk.doctype.tickets.tickets.send_statusmail',
+			 args:{"cl_status": frm.doc.clarification_status,
+				"docid": frm.doc.name
+			},
+			callback: function(r){
+				frappe.show_alert('Clarification Mail Sent')
+				frm.save()
+			}
+		});
 	}
 });

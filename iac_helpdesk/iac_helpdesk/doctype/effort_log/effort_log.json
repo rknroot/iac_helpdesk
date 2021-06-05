@@ -7,7 +7,8 @@
  "field_order": [
   "activity_type",
   "activity_date",
-  "hours_spent"
+  "hours_spent",
+  "hoursspent"
  ],
  "fields": [
   {
@@ -27,13 +28,20 @@
    "fieldname": "hours_spent",
    "fieldtype": "Float",
    "in_list_view": 1,
+   "label": "Hours Spent (Old)"
+  },
+  {
+   "columns": 4,
+   "fieldname": "hoursspent",
+   "fieldtype": "Duration",
+   "in_list_view": 1,
    "label": "Hours Spent"
   }
  ],
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2021-03-29 11:39:26.262870",
+ "modified": "2021-06-01 18:36:29.598818",
  "modified_by": "Administrator",
  "module": "IAC Helpdesk",
  "name": "Effort Log",

@@ -15,6 +15,7 @@
   "ticket_date",
   "time",
   "priority",
+  "color",
   "section_break_10",
   "description",
   "attachment",
@@ -38,10 +39,10 @@
   "saturday",
   "sunday",
   "clarification_details_section",
-  "clarification_status",
-  "column_break_10",
   "clarification_from",
   "clarification_to",
+  "column_break_10",
+  "clarification_status",
   "amended_from",
   "section_break_35",
   "parent_ticket",
@@ -320,11 +321,16 @@
   {
    "fieldname": "section_break_17",
    "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "color",
+   "fieldtype": "Color",
+   "label": "Color"
   }
  ],
  "is_submittable": 1,
  "links": [],
- "modified": "2021-04-17 10:22:49.773410",
+ "modified": "2021-06-05 18:30:11.785248",
  "modified_by": "Administrator",
  "module": "IAC Helpdesk",
  "name": "Tickets",

@@ -1,0 +1,36 @@
+{
+ "add_total_row": 0,
+ "columns": [],
+ "creation": "2021-03-30 10:48:01.835724",
+ "disable_prepared_report": 0,
+ "disabled": 0,
+ "docstatus": 0,
+ "doctype": "Report",
+ "filters": [],
+ "idx": 0,
+ "is_standard": "Yes",
+ "json": "{\"filters\":[[\"Tickets\",\"parent_ticket\",\"is\",\"not set\",false],[\"Effort Log\",\"activity_date\",\"Timespan\",\"last month\",false],[\"Tickets\",\"assigned_to\",\"=\",\"ramakrishnan@iackrishitech.com\"]],\"fields\":[[\"status\",\"Tickets\"],[\"name\",\"Tickets\"],[\"docstatus\",\"Tickets\"],[\"ticket_title\",\"Tickets\"],[\"category\",\"Tickets\"],[\"assigned_to\",\"Tickets\"],[\"ticket_date\",\"Tickets\"],[\"priority\",\"Tickets\"],[\"clarification_status\",\"Tickets\"],[\"parent_ticket\",\"Tickets\"],[\"activity_type\",\"Effort Log\"],[\"hours_spent\",\"Effort Log\"],[\"activity_date\",\"Effort Log\"]],\"order_by\":\"`tabTickets`.`ticket_date` desc\",\"add_totals_row\":true,\"page_length\":20,\"column_widths\":{},\"group_by\":null}",
+ "modified": "2021-05-04 11:37:31.985511",
+ "modified_by": "Administrator",
+ "module": "IAC Helpdesk",
+ "name": "Ramakrishnan Effort",
+ "owner": "parthi@neoponics.in",
+ "prepared_report": 0,
+ "ref_doctype": "Tickets",
+ "report_name": "Ramakrishnan Effort",
+ "report_type": "Report Builder",
+ "roles": [
+  {
+   "role": "Users"
+  },
+  {
+   "role": "Admin"
+  },
+  {
+   "role": "Cloud Admin"
+  },
+  {
+   "role": "System Manager"
+  }
+ ]
+}

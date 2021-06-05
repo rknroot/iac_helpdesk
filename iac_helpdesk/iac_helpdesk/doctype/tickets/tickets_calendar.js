@@ -1,22 +1,22 @@
 frappe.views.calendar["Tickets"] = {
 	field_map: {
 		// from_datetime and to_datetime don't exist as docfields but are used in onload
-		"start": "from_datetime",
-		"end": "to_datetime",
+		"start": "ticket_date",
+		"end": "ticket_date",
 		"id": "name",
-		"title": "category",
+		"title": "ticket_title",
 		"status": "status",
 		"allDay": "allDay"
 	},
 	gantt: {
-		"start": "from_datetime",
-		"end": "to_datetime",
+		"start": "ticket_date",
+		"end": "ticket_date",
 		"id": "name",
-		"title": "category",
+		"title": "ticket_title",
 		"status": "status",
 		"allDay": "allDay"
 	},
-	order_by: 'date',
+	order_by: 'ticket_date',
 	filters: [
 		{
 			"fieldtype": "Link",
